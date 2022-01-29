@@ -5,4 +5,8 @@
 .article {
   /* margin-left: 1.5rem; */
   margin: 0 auto;
+}
+.link{
+    text-decoration: inherit;
+    color: inherit;
 } 

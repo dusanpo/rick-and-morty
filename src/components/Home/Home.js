@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Cards from "../Cards/Cards";
 import "./Home.css";
 
@@ -14,7 +15,7 @@ function Home() {
         const data = await response.json();
         //console.log(data);
         console.log(data.results);
-        
+
         setCharacters(data.results);
       } catch (error) {
         console.log("error", error);
@@ -27,13 +28,14 @@ function Home() {
     <div className="wrapper">
       <h1 className="header">Rick and Morty</h1>
       <div className="class-wrapper">
-        {characters.map(character =>(
-          <article className="article" key = {character.id}>
-          <Cards character = {character} />
+        {characters.map(character => (
+          <article className="article" key={character.id}>
+            <Link className="link" to = "">
+              <Cards character={character} />
+            </Link>
           </article>
         ))}
       </div>
-
     </div>
   );
 }
