@@ -30,7 +30,13 @@ function Home() {
       <div className="class-wrapper">
         {characters.map(character => (
           <article className="article" key={character.id}>
-            <Link className="link" to = "">
+            <Link
+              className="link"
+              to={{
+                pathname: `/profile/${character.id}`,
+                state: { character },
+              }}
+            >
               <Cards character={character} />
             </Link>
           </article>
