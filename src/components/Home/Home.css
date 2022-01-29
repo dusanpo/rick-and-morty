@@ -1,0 +1,8 @@
+.class-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+.article {
+  margin-left: 1.5rem;
+  margin: 0 auto;
+}
