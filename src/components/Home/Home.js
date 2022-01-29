@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Cards from "../Cards/Cards";
 import "./Home.css";
 
 function Home() {
@@ -23,13 +24,12 @@ function Home() {
   }, []);
 
   return (
-    <div>
-      <h1>Rick and Morty</h1>
-      <div>
+    <div className="wrapper">
+      <h1 className="header">Rick and Morty</h1>
+      <div className="class-wrapper">
         {characters.map(character =>(
-          <article key = {character.id}>
-           <h2>{character.name}</h2>
-           <img src = {character.image} alt = "" />
+          <article className="article" key = {character.id}>
+          <Cards character = {character} />
           </article>
         ))}
       </div>
