@@ -8,23 +8,48 @@ function Home() {
   const [characters, setCharacters] = useState([]);
   const [allCharacters, setAllCharacters] = useState([]);
 
+  // useEffect(() => {
+  //   const fetchCharacters = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         "https://rickandmortyapi.com/api/character"
+  //       );
+  //       const data = await response.json();
+  //       console.log(data);
+  //       console.log(data.results);
+  //       setAllCharacters(data.results);
+  //       setCharacters(data.results);
+  //     } catch (error) {
+  //       console.log("error", error);
+  //     }
+  //   };
+  //   fetchCharacters();
+  // }, []);
+
   useEffect(() => {
-    const fetchCharacters = async () => {
-      try {
-        const response = await fetch(
-          "https://rickandmortyapi.com/api/character"
-        );
-        const data = await response.json();
-        //console.log(data);
-        console.log(data.results);
-        setAllCharacters(data.results);
-        setCharacters(data.results);
-      } catch (error) {
-        console.log("error", error);
-      }
-    };
-    fetchCharacters();
+    fetchCharacters("https://rickandmortyapi.com/api/character");
   }, []);
+
+  const fetchCharacters = async url => {
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+
+      setAllCharacters(_characters => {
+        return [..._characters, ...data.results];
+      });
+
+      setCharacters(_characters => {
+        return [..._characters, ...data.results];
+      });
+
+      if (data.info && data.info.next) {
+        fetchCharacters(data.info.next);
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
 
   const filterCards = event => {
     //console.log(event.target.value);
