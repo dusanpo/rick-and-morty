@@ -63,3 +63,20 @@
 .button:hover {
   background-color: rgb(94, 94, 236);
 }
+@media screen and (max-width: 768px){
+  .container {
+    background: url("https://fsb.zobj.net/crop.php?r=QhjedZtMqmAlTQY0AUZRUv_UKtT1kweacwPq0x9918UMKiGtUqy72IBY89zWTBoxp_K0bAaklgQEgEGEqlIi6WBVxcF-alzKLH0imc6y2aPLb7umz53cIEeGnRx7A5AK53Op1T2tSGyJEDiLJnMUB4-sysxEZynDi16coQ5n1KnOO2qNbALM8_mxQ2lBDxsphofFA_jqVAcmaxoE") fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+  }
+  .paragraph {
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+  }
+
+}
