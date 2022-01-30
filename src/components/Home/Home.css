@@ -1,3 +1,23 @@
+@font-face {
+  font-family: "wifty";
+  src: url("../../../public/fonts/wifty.ttf");
+}
+.title {
+  font-family: "wifty";
+  font-size: 45px;
+  color: rgb(53, 156, 134);
+  text-shadow: -1px 0 yellow, 0 2px yellow, 2px 0 yellow, 0 -1px yellow;
+}
+.wrapper {
+  background: url("https://wallpapercave.com/wp/8cEpZrx.jpg") fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
 .class-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -6,7 +26,7 @@
   /* margin-left: 1.5rem; */
   margin: 0 auto;
 }
-.link{
-    text-decoration: inherit;
-    color: inherit;
-} 
+.link {
+  text-decoration: inherit;
+  color: inherit;
+}
