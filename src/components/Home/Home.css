@@ -30,3 +30,8 @@
   text-decoration: inherit;
   color: inherit;
 }
+.display-text{
+  color:white;
+  margin-top: 5rem;
+  text-transform: uppercase;
+}

@@ -6,6 +6,7 @@ import "./Home.css";
 
 function Home() {
   const [characters, setCharacters] = useState([]);
+  const [allCharacters, setAllCharacters] = useState([]);
 
   useEffect(() => {
     const fetchCharacters = async () => {
@@ -16,7 +17,7 @@ function Home() {
         const data = await response.json();
         //console.log(data);
         console.log(data.results);
-
+        setAllCharacters(data.results);
         setCharacters(data.results);
       } catch (error) {
         console.log("error", error);
@@ -25,10 +26,19 @@ function Home() {
     fetchCharacters();
   }, []);
 
+  const filterCards = event => {
+    //console.log(event.target.value);
+    const value = event.target.value.toLowerCase();
+    const filteredCharacters = allCharacters.filter(searchCharacter =>
+      `${searchCharacter.name}`.toLocaleLowerCase().includes(value.trim())
+    );
+    setCharacters(filteredCharacters);
+  };
+
   return (
     <div className="wrapper">
       <h1 className="title">Rick and Morty</h1>
-      <SearchBar />
+      <SearchBar filterCards={filterCards} />
       <div className="class-wrapper">
         {characters.map(character => (
           <article className="article" key={character.id}>
@@ -44,6 +54,11 @@ function Home() {
           </article>
         ))}
       </div>
+      {characters.length ? (
+        characters.character
+      ) : (
+        <h1 className="display-text">No characters found!</h1>
+      )}
     </div>
   );
 }

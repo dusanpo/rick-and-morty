@@ -1,10 +1,15 @@
 import React from "react";
 import "./SearchBar.css";
 
-function SearchBar() {
+function SearchBar({ filterCards }) {
   return (
     <div>
-      <input type = "text" className="search-box" placeholder="Search characters..." />
+      <input
+        type="text"
+        className="search-box"
+        placeholder="Search characters..."
+        onInput={filterCards}
+      />
     </div>
   );
 }
