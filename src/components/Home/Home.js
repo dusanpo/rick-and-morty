@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Cards from "../Cards/Cards";
+import Pagination from "../Pagination/Pagination";
 import SearchBar from "../SearchBar/SearchBar";
 import "./Home.css";
 
 function Home() {
   const [characters, setCharacters] = useState([]);
   const [allCharacters, setAllCharacters] = useState([]);
+  const [pageNumber, setPageNumber] = useState([0]);
 
   // useEffect(() => {
   //   const fetchCharacters = async () => {
@@ -38,7 +40,6 @@ function Home() {
       setAllCharacters(_characters => {
         return [..._characters, ...data.results];
       });
-
       setCharacters(_characters => {
         return [..._characters, ...data.results];
       });
@@ -52,7 +53,6 @@ function Home() {
   };
 
   const filterCards = event => {
-    //console.log(event.target.value);
     const value = event.target.value.toLowerCase();
     const filteredCharacters = allCharacters.filter(searchCharacter =>
       `${searchCharacter.name}`.toLocaleLowerCase().includes(value.trim())
@@ -60,24 +60,40 @@ function Home() {
     setCharacters(filteredCharacters);
   };
 
+  const charactersPerPage = 20;
+  const charactersVisited = pageNumber * charactersPerPage;
+
+  const displayCharacters = characters
+    .slice(charactersVisited, charactersVisited + charactersPerPage)
+    .map(character => {
+      return (
+        <article className="article" key={character.id}>
+          <Link
+            className="link"
+            to={{
+              pathname: `/profile/${character.id}`,
+              state: { character },
+            }}
+          >
+            <Cards character={character} />
+          </Link>
+        </article>
+      );
+    });
+
+  const pageCount = Math.ceil(characters.length / charactersPerPage);
+
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
+
   return (
     <div className="wrapper">
       <h1 className="title">Rick and Morty</h1>
       <SearchBar filterCards={filterCards} />
       <div className="class-wrapper">
-        {characters.map(character => (
-          <article className="article" key={character.id}>
-            <Link
-              className="link"
-              to={{
-                pathname: `/profile/${character.id}`,
-                state: { character },
-              }}
-            >
-              <Cards character={character} />
-            </Link>
-          </article>
-        ))}
+        {displayCharacters}
+        <Pagination pageCount={pageCount} changePage={changePage} />
       </div>
       {characters.length ? (
         characters.character
