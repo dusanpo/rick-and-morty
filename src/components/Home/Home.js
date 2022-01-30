@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Cards from "../Cards/Cards";
+import SearchBar from "../SearchBar/SearchBar";
 import "./Home.css";
 
 function Home() {
@@ -26,7 +27,8 @@ function Home() {
 
   return (
     <div className="wrapper">
-      <h1 className="header">Rick and Morty</h1>
+      <h1 className="title">Rick and Morty</h1>
+      <SearchBar />
       <div className="class-wrapper">
         {characters.map(character => (
           <article className="article" key={character.id}>

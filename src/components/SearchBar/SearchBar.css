@@ -1,0 +1,13 @@
+.search-box {
+  outline: none;
+  border: 2px solid #2b2eff;
+  font-size: 20px;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  width: 30vw;
+  background-color: rgba(245, 235, 235, 0.863);
+}
+::placeholder {
+  color: black;
+  font-size: 15px;
+}
