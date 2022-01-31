@@ -11,6 +11,8 @@ function Pagination({ pageCount, changePage }) {
         pageCount={pageCount}
         onPageChange={changePage}
         renderOnZeroPageCount={null}
+        marginPagesDisplayed = {1}
+        pageRangeDisplayed = {1}
         containerClassName={"paginationBtn"}
         previousLinkClassName={"previousBtn"}
         nextLinkClassName={"nextBtn"}
